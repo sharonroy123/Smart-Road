@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".Supervisor.Super_Approved_Tender_Details"
+    android:background="#fff">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_margin="20dp"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:paddingTop="8dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:paddingBottom="8dp"
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        android:textSize="20dp"
+        android:fontFamily="serif-monospace"
+        android:textColor="@color/red"
+        android:text="Tenders Details"/>
+
+    <LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_marginTop="10dp"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginRight="5dp"
+        android:src="@drawable/ic_menu_send" />
+
+        <TextView
+            android:id="@+id/super_tend_approved_details_subject"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:fontFamily="serif-monospace"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:text="Complaint Name"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/ic_monetization_on_black_24dp" />
+        <TextView
+            android:id="@+id/super_tend_approved_details_budget"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:fontFamily="serif-monospace"
+            android:layout_gravity="center_horizontal"
+            android:textSize="20dp"
+            android:layout_height="30dp"
+            android:text="budget"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/startdate" />
+            <TextView
+                android:id="@+id/super_tend_approved_details_startdate"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:textSize="20dp"
+                android:fontFamily="serif-monospace"
+                android:layout_height="30dp"
+                android:text="Start Date"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/enddate" />
+
+            <TextView
+                android:id="@+id/super_tend_approved_details_enddate"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:gravity="right"
+                android:text="End Date"
+                android:fontFamily="serif-monospace"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+    <TextView
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="Description"/>
+    <EditText
+        android:id="@+id/super_tend_approved_details_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:fontFamily="serif-monospace"
+        android:focusableInTouchMode="false"
+        android:textColor="@color/colorPrimaryDark"
+        android:gravity="top|left"
+        android:background="@drawable/custom_edittext"
+        android:hint=" details..."
+        android:textStyle="italic"
+        android:inputType="textMultiLine"
+        android:minLines="5"/>/>
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:textColor="@color/red"
+        android:layout_gravity="center"
+        android:textSize="15dp"
+        android:fontFamily="serif-monospace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="work progress"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/super_tend_approved_details_details_perc"
+            android:textColor="@color/color1"
+            android:fontFamily="serif-monospace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="20%"/>
+    <SeekBar
+        android:id="@+id/super_tend_approved_details_details_seekbar"
+        android:layout_width="match_parent"
+        android:focusableInTouchMode="false"
+        android:layout_height="wrap_content" />
+    </LinearLayout>
+    <Button
+        android:id="@+id/super_tend_approved_details_details_upadate"
+        android:layout_marginTop="15dp"
+        android:layout_width="wrap_content"
+        android:text="update progress"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
+
+</LinearLayout>

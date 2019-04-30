@@ -1,0 +1,238 @@
+
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
+
+<%@page import="java.util.Vector"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="connection.DbConnection"%>
+<%
+    DbConnection con = new DbConnection();
+
+    
+    String key = request.getParameter("key").trim();
+    System.out.println(key);
+    if (key.equals("login")) {
+        String info = "";
+            String qry = "select * from `login` where username='" + request.getParameter("username") + "'and password='" + request.getParameter("password") + "' ";
+            System.out.println("qry=" + qry);
+            Iterator it = con.GetData(qry).iterator();
+            if (it.hasNext()) {
+                Vector v = (Vector) it.next();
+                info = v.get(1) + ":" + v.get(4);
+                out.print(info);
+            } else {
+                System.out.println("else id=" + info);
+                out.print("failed");
+            }
+    }
+    if (key.equals("reg_user")) {
+        String name = request.getParameter("name");
+        String gender = request.getParameter("gender");
+        String address = request.getParameter("address");
+        String phone = request.getParameter("phone");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+
+        String qry = "INSERT INTO `user_registration`(`name`,`gender`,`address`,`phone`,`email`,`password`) VALUES ('" + name + "','" + gender + "','" + address + "','" + phone + "','" + email + "','" + password + "') ";
+        String qry1 = "insert into login (uid,username,password,type)values((select max(uid)from user_registration),'" + email + "','" + password + "','user')";
+        if (con.PutData(qry) > 0) {
+
+            if (con.PutData(qry1) > 0) {
+                out.print("successful");
+            }
+
+        } else {
+            out.print("failed");
+        }
+    }
+    
+if (key.equals("reg_supervisor")) {
+        String name = request.getParameter("name");
+        String gender = request.getParameter("gender");
+        String address = request.getParameter("address");
+        String phone = request.getParameter("phone");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        String qual = request.getParameter("qual");
+        String exper = request.getParameter("exper");
+
+        String qry = "INSERT INTO `supervisor_reg`(`name`,`gender`,`address`,`phone`,`qualification`,`experience`,`email`,`password`) VALUES ('" + name + "','" + gender + "','" + address + "','" + phone + "','" + qual + "','" + exper + "','" + email + "','" + password + "') ";
+        String qry1 = "insert into login (uid,username,password,type)values((select max(rid)from supervisor_reg),'" + email + "','" + password + "','supervisor')";
+        if (con.PutData(qry) > 0) {
+
+            if (con.PutData(qry1) > 0) {
+                out.print("successful");
+            }
+
+        } else {
+            out.print("failed");
+        }
+    }
+
+if (key.equals("UseraddComplaint")) {
+        String uid = request.getParameter("uid");
+        String subject = request.getParameter("subject");
+        String details = request.getParameter("details");
+        String image = request.getParameter("image");
+        String latitude = request.getParameter("latitude");
+        String longitude = request.getParameter("longitude");
+
+        Date date=new Date();
+        SimpleDateFormat format=new SimpleDateFormat("dd-MM-yyyy");
+        String strDate=format.format(date);
+        
+        String qry = "insert into `user_complaint` (`uid`,`subject`,`details`,`date`,`photo`,`latitude`,`longitude`,`status`) values('"+uid+"','"+subject+"','"+details+"','"+strDate+"','"+image+"','"+latitude+"','"+longitude+"','0')";
+        if (con.PutData(qry) > 0) {
+          out.print("successful");
+        } else {
+            out.print("failed");
+        }
+    }
+
+    if (key.equals("getMyComplaintList")) {
+        String uid = request.getParameter("uid");
+        String info = "",list="",fulldata="";
+            String qry = "select * from `user_complaint` where `uid`='"+uid+"' AND `status`='0'";
+            System.out.println("qry=" + qry);
+            Iterator it = con.GetData(qry).iterator();
+            if (it.hasNext()) {
+                while(it.hasNext()){
+                Vector v = (Vector) it.next();
+                //list+= "\nSublect     -  "+v.get(2) + "\nDate          -  " + v.get(4)+ "\nDetails      -  " + v.get(3)+"&";
+                list+= "\nSublect     -  "+v.get(2) + "\n\nDate          -  " + v.get(4)+"\n&";
+                fulldata+= v.get(2) + ":" + v.get(4)+ ":" + v.get(3)+":"+v.get(5) +":"+v.get(6) +":"+v.get(7) +"&";
+                }
+                info=list+"#"+fulldata;
+                out.print(info);
+            } else {
+                System.out.println("else id=" + info);
+                out.print("failed");
+            }
+    }
+    
+
+if (key.equals("getUserComplaintList")) {     
+        String info = "",list="",fulldata="";
+            String qry = "SELECT * FROM `user_complaint` c,`user_registration` u WHERE c.`uid`=u.`uid` AND c.`status`='0'";
+            System.out.println("qry=" + qry);
+            Iterator it = con.GetData(qry).iterator();
+            if (it.hasNext()) {
+                while(it.hasNext()){
+                Vector v = (Vector) it.next();
+                //list+= "\nSublect     -  "+v.get(2) + "\nDate          -  " + v.get(4)+ "\nDetails      -  " + v.get(3)+"&";
+                list+= "\nUser        -  "+v.get(10) +"\nPhone     -  "+v.get(13) +"\nEmail      -  "+v.get(14) +"\nSublect   -  "+v.get(2) + "\nDate        -  " + v.get(4)+"\n&";
+                fulldata+= v.get(2) + ":" + v.get(4)+ ":" + v.get(3)+":"+v.get(5) +":"+v.get(6) +":"+v.get(7) +":"+v.get(9) +":"+v.get(10) +":"+v.get(13) +":"+v.get(14) +":"+v.get(0) +"&";
+                }
+                info=list+"#"+fulldata;
+                out.print(info);
+            } else {
+                System.out.println("else id=" + info);
+                out.print("failed");
+            }
+    }
+
+
+if (key.equals("ResolveUserComplaint")) {
+        String cid = request.getParameter("cid");
+      
+       // Date date=new Date();
+       // SimpleDateFormat format=new SimpleDateFormat("dd-MM-yyyy");
+        //String strDate=format.format(date);
+        
+        String qry = "update `user_complaint` set `status`='resolved' where `cid`='"+cid+"'";
+        if (con.PutData(qry) > 0) {
+          out.print("successful");
+        } else {
+            out.print("failed");
+        }
+    }
+
+
+if (key.equals("PostNewTender")) {
+        String cid = request.getParameter("cid");
+        String budget = request.getParameter("budget");
+        String compdate = request.getParameter("date");
+        String details = request.getParameter("details");
+      
+        Date today=new Date();
+        SimpleDateFormat format=new SimpleDateFormat("dd-MM-yyyy");
+        String strDate=format.format(today);
+        
+        String qry = "insert into `new_tender`(`cid`,`ondate`,`budget`,`completion_date`,`details`) values('"+cid+"','"+strDate+"','"+budget+"','"+compdate+"','"+details+"')";
+        String qry1 = "update `user_complaint` set `status`='tender' where `cid`='"+cid+"'";
+        System.out.println(qry);
+        if (con.PutData(qry) > 0&&con.PutData(qry1) > 0) {
+          out.print("successful");
+        } else {
+            out.print("failed");
+        }
+    }
+
+if (key.equals("getTenderList")) {
+        String uid = request.getParameter("uid");
+        String info = "",list="",fulldata="";
+            //String qry = "SELECT * FROM `user_complaint` c,`new_tender` t WHERE c.`cid`=t.`cid`";
+            String qry = "SELECT * FROM `user_complaint` c,`new_tender` t, `bids` b WHERE c.`cid`=t.`cid` AND t.`tid` NOT IN (SELECT `tid` FROM `bids` WHERE  `uid`='"+uid+"')";
+            System.out.println("qry=" + qry);
+            Iterator it = con.GetData(qry).iterator();
+            if (it.hasNext()) {
+                while(it.hasNext()){
+                Vector v = (Vector) it.next();
+                //list+= "\nSublect     -  "+v.get(2) + "\nDate          -  " + v.get(4)+ "\nDetails      -  " + v.get(3)+"&";
+                list+= "\nSublect       -  "+v.get(2) + "\n\nCompletion date     -  " + v.get(13)+"\n\nBudget     -  " + v.get(12)+"\n&";
+                fulldata+= v.get(0) + ":" + v.get(2)+ ":" + v.get(3)+":"+v.get(5) +":"+v.get(6) +":"+v.get(7) +":"+v.get(9) +":"+v.get(11) +":"+v.get(12) +":"+v.get(13) +":"+v.get(14) +"&";
+                }
+                info=list+"#"+fulldata;
+                out.print(info);
+            } else {
+                System.out.println("else id=" + info);
+                out.print("failed");
+            }
+    }
+
+
+if (key.equals("AddBids")) {
+        String uid = request.getParameter("uid");
+        String tid = request.getParameter("tid");
+        String bamount = request.getParameter("bamount");
+        String bdetails = request.getParameter("bdetails");
+
+//        Date date=new Date();
+//        SimpleDateFormat format=new SimpleDateFormat("dd-MM-yyyy");
+//        String strDate=format.format(date);
+        
+        String qry = "INSERT INTO `bids`(`uid`,`tid`,`amount`,`details`) VALUES ('"+uid+"','"+tid+"','"+bamount+"','"+bdetails+"')";
+        if (con.PutData(qry) > 0) {
+          out.print("successful");
+        } else {
+            out.print("failed");
+        }
+    }
+
+if (key.equals("getbidsList")) {
+        String uid = request.getParameter("uid");
+        String info = "",list="",fulldata="";
+            //String qry = "SELECT * FROM `user_complaint` c,`new_tender` t WHERE c.`cid`=t.`cid`";
+            String qry = "SELECT * FROM `user_complaint` c,`new_tender` t, `bids` b,`supervisor_reg` s WHERE c.`cid`=t.`cid` AND t.`tid` AND t.`tid`=b.`tid` AND s.`rid`=b.`uid` AND b.`status`='0'";
+            System.out.println("qry=" + qry);
+            Iterator it = con.GetData(qry).iterator();
+            if (it.hasNext()) {
+                while(it.hasNext()){
+                Vector v = (Vector) it.next();
+                //list+= "\nSublect     -  "+v.get(2) + "\nDate          -  " + v.get(4)+ "\nDetails      -  " + v.get(3)+"&";
+                list+= "\nSublect          -  "+v.get(2) +"\n\nBudget           -  " + v.get(12)+"\n\nSupervisor     -  " + v.get(23)+"\n\nBid Amount   -  " + v.get(19)+"\n&";
+                fulldata+= v.get(9) + ":" + v.get(16)+ ":" + v.get(22)+":"+v.get(21) +":"+v.get(23) +":"+v.get(26) +":"+v.get(29) +":"+v.get(2) +":"+v.get(3) +":"+v.get(13) +":"+v.get(12) +":"+v.get(19) +":"+v.get(20) +"&";
+                //tid,bid,sid,bstaus,sname,phone,email,subject,details,expdate,budget,bidamound
+                }
+                info=list+"#"+fulldata;
+                out.print(info);
+            } else {
+                System.out.println("else id=" + info);
+                out.print("failed");
+            }
+    }
+
+
+
+
+%>

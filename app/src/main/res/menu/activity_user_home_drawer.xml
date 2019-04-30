@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_user_add_complaint"
+            android:icon="@drawable/addcomplainticon"
+            android:title="Add Complaint" />
+        <item
+            android:id="@+id/nav_user_view_complaints"
+            android:icon="@drawable/list"
+            android:title="View Complaints" />
+        <item
+            android:id="@+id/nav_user_view_location"
+            android:icon="@drawable/location"
+            android:title="View Location" />
+        <item
+            android:id="@+id/nav_user_send_feedback"
+            android:icon="@drawable/feedbackicon"
+            android:title="Send Feedback" />
+
+    </group>
+
+
+</menu>

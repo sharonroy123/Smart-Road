@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Registration"
+    android:background="@drawable/blur">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="25dp">
+
+            <Switch
+                android:id="@+id/user_reg_switchuser"
+                android:layout_gravity="right"
+                android:layout_width="wrap_content"
+                android:text="Supervisor"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                android:layout_marginTop="15dp"
+                android:layout_height="wrap_content" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_height="50dp">
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/user_reg_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Name"
+                    android:background="@drawable/last"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <RadioGroup
+                android:id="@+id/user_reg_rdgroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="10dp"
+                    android:text="Gender"
+                    android:textColor="#fff"/>
+                <RadioButton
+                    android:id="@+id/user_reg_male"
+                    android:checked="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="5dp"
+                    android:text="Male"
+                    android:textColor="#fff"/>
+                <RadioButton
+                    android:id="@+id/user_reg_female"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Female"
+                    android:textColor="#fff"/>
+            </RadioGroup>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_height="50dp">
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/user_reg_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Address"
+                    android:background="@drawable/last"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_height="50dp">
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:id="@+id/user_reg_phone"
+                    android:inputType="number"
+                    android:layout_height="wrap_content"
+                    android:hint="Phone"
+                    android:background="@drawable/last"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:id="@+id/user_reg_layout_qualification"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                android:layout_height="50dp">
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:id="@+id/user_reg_qualification"
+                    android:inputType="text"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/last"
+                    android:hint="Qualification"
+                   />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                android:id="@+id/user_reg_layout_experience"
+                android:layout_height="90dp">
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:id="@+id/user_reg_experience"
+                    android:minLines="5"
+                    android:inputType="textMultiLine"
+                    android:gravity="top"
+                    android:overScrollMode="always"
+                    android:layout_height="match_parent"
+                    android:hint="Experience"
+                    android:background="@drawable/last"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_height="50dp">
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:id="@+id/user_reg_email"
+                    android:hint="Email"
+                    android:background="@drawable/last"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_height="50dp"
+                app:passwordToggleDrawable="@drawable/ic_remove_red_eye_black_24dp"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/colorPrimaryDark">
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/user_reg_password"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:hint="password"
+                    android:background="@drawable/last"/>
+
+            </android.support.design.widget.TextInputLayout>
+            <Button
+                android:id="@+id/user_reg_btnreg"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="25dp"
+                android:background="@color/colorPrimaryDark"
+                android:textColor="#FFFFFF"
+                android:text="   Register   "
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/user_reg_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:textColor="#fff"
+                android:layout_marginTop="20dp"
+                android:gravity="center_horizontal"
+                android:text="already registered! login me"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

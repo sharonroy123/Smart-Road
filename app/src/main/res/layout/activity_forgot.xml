@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".forgot"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/blur">
+<EditText
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="EMAIL"
+    android:id="@+id/email"
+    android:background="@drawable/last"/>
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="171dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="Submit"
+        android:textColor="#fff"
+        android:textStyle="bold" />
+
+</LinearLayout>

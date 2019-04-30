@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".User.UserHome"
+    tools:showIn="@layout/app_bar_user_home"
+    android:background="@drawable/roood"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_gravity=""
+        android:text=" snap it, tag it and get it fixed. "
+        android:textColor="#fff"
+        android:textSize="22dp"
+        android:textStyle="bold|italic"
+        android:layout_marginLeft="100dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Smart Road can help clean up our roads and make them safe for travel. "
+        android:textColor="#fff"
+        android:layout_marginTop="10dp"
+        android:textSize="22dp"
+        android:textStyle="bold|italic"
+        android:layout_marginLeft="70dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="All complaints will be geotagged and automatically sent to the PWD complaint management system."
+        android:textColor="#fff"
+        android:textSize="22dp"
+        android:textStyle="bold|italic"
+        android:layout_marginLeft="30dp"
+        />
+
+</LinearLayout>

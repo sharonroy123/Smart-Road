@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_admin_view_supervisor"
+            android:icon="@drawable/approveiocn"
+            android:title="View reg Request" />
+        <item
+            android:id="@+id/nav_admin_view_complaints"
+            android:icon="@drawable/compainticon"
+            android:title="View Complaints" />
+        <item
+            android:id="@+id/nav_admin_view_bids"
+            android:icon="@drawable/listicon"
+            android:title="View Bids" />
+        <item
+            android:id="@+id/nav_admin_view_workprogress"
+            android:icon="@drawable/progress"
+            android:title="View Work Progress" />
+        <item
+            android:id="@+id/nav_admin_view_feedbacks"
+            android:icon="@drawable/feedbackicon"
+            android:title="View Feddbacks" />
+
+    </group>
+
+
+</menu>
